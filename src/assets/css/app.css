@@ -1,3 +1,13 @@
 .app {
-  @apply h-screen bg-gray-700 text-white;
+  font-family: Poppins, sans-serif;
+  @apply h-full bg-gray-700 text-white;
+}
+
+#navbar-title {
+  font-family: "Raleway", sans-serif;
+}
+
+.home-banner {
+  background-image: url("../../assets/img/home.jpg");
+  background-size: cover;
 }
