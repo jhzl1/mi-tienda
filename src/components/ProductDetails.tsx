@@ -14,8 +14,8 @@ export const ProductDetails = ({ price, quantity, onAddCart }: Props) => {
 
   let priceWithoutDiscount = 0
 
-  const incrementQuantity = () => setQuantity(quantity + 1)
-  const decrementQuanity = () => setQuantity(quantity - 1)
+  const incrementQuantity = () => setQuantity(_quantity + 1)
+  const decrementQuanity = () => setQuantity(_quantity - 1)
 
   if (price) priceWithoutDiscount = Math.floor((price * 20) / 100) + price
 

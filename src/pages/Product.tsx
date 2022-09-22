@@ -1,13 +1,15 @@
 import { Divider, Rating, Skeleton } from "@mui/material"
 import { PageContainer } from "components/PageContainer"
 import { ProductDetails } from "components/ProductDetails"
-import { useGetProduct } from "hooks"
+import { useCart, useGetProduct } from "hooks"
 import { useParams } from "react-router-dom"
 
 export const ProductPage = () => {
   const { productId } = useParams<"productId">()
 
   const { isLoading, product } = useGetProduct(Number(productId))
+
+  const { handleAddToCart } = useCart()
 
   return (
     <PageContainer>
@@ -28,7 +30,14 @@ export const ProductPage = () => {
               <ProductDetails
                 price={product!?.price}
                 quantity={product!?.rating.count}
-                onAddCart={(qq) => console.log(qq)}
+                onAddCart={(quantity) =>
+                  handleAddToCart({
+                    image: product!?.image,
+                    price: product!?.price,
+                    quantity: quantity,
+                    title: product!?.title,
+                  })
+                }
               />
             </div>
             <Rating
