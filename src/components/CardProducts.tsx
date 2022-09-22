@@ -42,10 +42,10 @@ export const CardProducts = ({ title, image, rating, price, id }: Props) => {
       </CardContent>
       <CardActions className="">
         <Button size="small" color="secondary">
-          Añadir al carrito
+          Add to cart
         </Button>
         <Button size="small" onClick={() => navigate(`/products/${id}`)}>
-          Ver detalles
+          See details
         </Button>
       </CardActions>
     </Card>

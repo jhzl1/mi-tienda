@@ -5,7 +5,7 @@ export const ProductsPage = () => {
   return (
     <PageContainer>
       <h2 className="text-center text-5xl mb-10  text-[#003890]">
-        Todos los productos disponibles
+        All products available
       </h2>
       <ListProducts />
     </PageContainer>

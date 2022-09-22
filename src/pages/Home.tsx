@@ -19,9 +19,9 @@ export const HomePage = () => {
     <div>
       <div className="home-banner h-screen px-36 flex flex-col justify-center">
         <div className="max-w-xl">
-          <span className="font-bold text-xl">Nueva colección</span>
+          <span className="font-bold text-xl">New collection</span>
           <h1 className="font-bold text-[60px]">
-            Encuentra todo lo que te gusta en un solo sitio
+            Find everything you like in one place
           </h1>
 
           <Button
@@ -30,21 +30,19 @@ export const HomePage = () => {
             className="!text-xl"
             onClick={handleSeeMore}
           >
-            Ver más
+            See more
           </Button>
         </div>
       </div>
 
       <div className="px-5 py-20" ref={someProductsRef}>
         <h2 className="text-center text-5xl mb-20  text-[#003890]">
-          Algunos productos
+          Some products
         </h2>
         <ListProducts limitOfProducts={4} />
       </div>
       <div className="flex justify-center px-36 mb-16">
-        <Button onClick={() => navigate("/products")}>
-          Ver todos los productos
-        </Button>
+        <Button onClick={() => navigate("/products")}>See all products</Button>
       </div>
     </div>
   )

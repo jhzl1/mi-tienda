@@ -2,28 +2,21 @@ import { fetchApi } from "api/fakeStoreApi"
 import { Product } from "interfaces/Product"
 import { useEffect, useState } from "react"
 
-export const useGetProducts = (limit?: number) => {
+export const useGetProduct = (idProduct: number) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [products, setProducts] = useState<Product[]>([])
-
-  const isExistingProducts = products.length > 0
+  const [product, setProduct] = useState<Product | null>(null)
 
   useEffect(() => {
     const getProducts = async () => {
       setIsLoading(true)
 
       try {
-        const { data } = await fetchApi<Product[]>({
-          endpoint: "/products",
+        const { data } = await fetchApi<Product>({
+          endpoint: `/products/${idProduct}`,
           method: "GET",
-          ...(limit && {
-            params: {
-              limit,
-            },
-          }),
         })
 
-        setProducts(data)
+        setProduct(data)
       } catch (error) {
         console.log(error)
       }
@@ -33,5 +26,5 @@ export const useGetProducts = (limit?: number) => {
     getProducts()
   }, [])
 
-  return { isLoading, products, isExistingProducts }
+  return { product, isLoading }
 }

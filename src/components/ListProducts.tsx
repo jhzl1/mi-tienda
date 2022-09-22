@@ -7,9 +7,8 @@ interface Props {
 }
 
 export const ListProducts = ({ limitOfProducts }: Props) => {
-  const { isLoading, products, isExistingProducts } = useGetProducts({
-    limit: limitOfProducts,
-  })
+  const { isLoading, products, isExistingProducts } =
+    useGetProducts(limitOfProducts)
 
   return (
     <div className="px-36 grid grid-cols-4 gap-10">
@@ -19,7 +18,9 @@ export const ListProducts = ({ limitOfProducts }: Props) => {
         ))}
 
       {isExistingProducts &&
-        products.map((product) => <CardProducts {...product} />)}
+        products.map((product) => (
+          <CardProducts key={product.id} {...product} />
+        ))}
     </div>
   )
 }

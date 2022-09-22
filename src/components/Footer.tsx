@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <div className="bg-white p-5 text-gray-700 flex justify-center mt-5">
       <div className="flex flex-col justify-center items-center">
-        <span className="text-lg mb-3">Síguenos en nuestra redes sociales</span>
+        <span className="text-lg mb-3">Follow us on our social networks</span>
 
         <div className="grid grid-cols-4 gap-5">
           {socialLinks.map((social) => (
