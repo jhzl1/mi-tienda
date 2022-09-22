@@ -3,38 +3,51 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardMedia,
   Rating,
   Typography,
 } from "@mui/material"
+import { formatMoney } from "helpers/formatMoney"
+import { Product } from "interfaces/Product"
+import { useNavigate } from "react-router-dom"
 
-export const CardProducts = () => {
+type Props = Product
+
+export const CardProducts = ({ title, image, rating, price, id }: Props) => {
+  const { rate } = rating
+
+  const priceWithoutDiscount = Math.floor((price * 20) / 100) + price
+
+  const navigate = useNavigate()
+
   return (
-    <div>
-      <Card>
-        <CardMedia
-          component="img"
-          alt="green iguana"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small" color="secondary">
-            Share
-          </Button>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-      <Rating name="read-only" value={2} readOnly />
-    </div>
+    <Card className="flex flex-col justify-between">
+      <div className="flex flex-col items-center justify-center my-2">
+        <img src={image} className="max-h-80 mb-4" />
+        <Rating name="read-only" value={Math.ceil(rate)} readOnly />
+      </div>
+
+      <CardContent>
+        <Typography variant="h6" component="div">
+          {title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          <span className="text-xl font-bold text-[#003890]">
+            {formatMoney(price)}
+          </span>{" "}
+          -
+          <span className="ml-1 text-md line-through decoration-red-500">
+            {formatMoney(priceWithoutDiscount)}
+          </span>
+        </Typography>
+      </CardContent>
+      <CardActions className="">
+        <Button size="small" color="secondary">
+          Añadir al carrito
+        </Button>
+        <Button size="small" onClick={() => navigate(`/products/${id}`)}>
+          Ver detalles
+        </Button>
+      </CardActions>
+    </Card>
   )
 }

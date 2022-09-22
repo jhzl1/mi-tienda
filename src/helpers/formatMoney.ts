@@ -4,5 +4,5 @@ export const formatMoney = (number: number) => {
   return currency(number, {
     symbol: "$",
     precision: 2,
-  })
+  }).format()
 }

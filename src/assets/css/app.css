@@ -1,6 +1,6 @@
 .app {
   font-family: Poppins, sans-serif;
-  @apply h-full bg-gray-700 text-white;
+  @apply h-full bg-gray-100 text-white;
 }
 
 #navbar-title {

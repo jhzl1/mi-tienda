@@ -2,7 +2,7 @@ export const Footer = () => {
   const socialLinks = ["instagram", "youtube", "facebook", "twitter"]
 
   return (
-    <div className="bg-white p-5 text-gray-700 flex justify-center ">
+    <div className="bg-white p-5 text-gray-700 flex justify-center mt-5">
       <div className="flex flex-col justify-center items-center">
         <span className="text-lg mb-3">Síguenos en nuestra redes sociales</span>
 
