@@ -1,4 +1,4 @@
-import { Button, Divider, Rating, Skeleton } from "@mui/material"
+import { Divider, Rating, Skeleton } from "@mui/material"
 import { PageContainer } from "components/PageContainer"
 import { ProductDetails } from "components/ProductDetails"
 import { useGetProduct } from "hooks"
