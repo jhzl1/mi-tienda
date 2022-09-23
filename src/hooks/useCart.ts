@@ -6,7 +6,7 @@ import {
   openCart,
   resetCart,
   updateProduct,
-  updateQuantityProduct,
+  updateProductQuantity,
 } from "store/slices"
 import { useAppDispatch } from "./useAppDispatch"
 import { useAppSelector } from "./useAppSelector"
@@ -21,7 +21,7 @@ export const useCart = () => {
   }
 
   const _updateQuantityProduct = (id: number, quantity: number) => {
-    dispatch(updateQuantityProduct({ id, quantity }))
+    dispatch(updateProductQuantity({ id, quantity }))
 
     renderPopup("The item has been updated")
   }

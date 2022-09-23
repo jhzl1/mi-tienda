@@ -30,7 +30,7 @@ export const cartSlice = createSlice({
     closeCart: (state) => {
       state.isOpenCart = false
     },
-    updateQuantityProduct: (state, action: PayloadAction<UpdateProduct>) => {
+    updateProductQuantity: (state, action: PayloadAction<UpdateProduct>) => {
       for (const product of state.products) {
         if (product.id === action.payload.id) {
           product.quantity = product.quantity + action.payload.quantity
@@ -64,5 +64,5 @@ export const {
   openCart,
   resetCart,
   updateProduct,
-  updateQuantityProduct,
+  updateProductQuantity,
 } = cartSlice.actions

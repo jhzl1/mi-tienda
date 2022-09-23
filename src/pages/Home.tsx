@@ -4,10 +4,10 @@ import { useRef } from "react"
 import { useNavigate } from "react-router-dom"
 
 export const HomePage = () => {
-  const someProductsRef = useRef<any>(null)
+  const someProductsRef = useRef<HTMLDivElement>(null)
 
   const handleSeeMore = () => {
-    someProductsRef.current.scrollIntoView({
+    someProductsRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     })
