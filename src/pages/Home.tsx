@@ -35,13 +35,13 @@ export const HomePage = () => {
         </div>
       </div>
 
-      <div className="px-5 py-20" ref={someProductsRef}>
-        <h2 className="text-center text-3xl  md:text-5xl mb-20  text-[#003890]">
+      <div className="px-5 py-10 md:py-20" ref={someProductsRef}>
+        <h2 className="text-center text-3xl  md:text-5xl mb-10 md:mb-20  text-[#003890]">
           Some products
         </h2>
         <ListProducts limitOfProducts={4} />
       </div>
-      <div className="flex justify-center px-36 mb-16">
+      <div className="flex justify-center md:px-36 mb-16">
         <Button onClick={() => navigate("/products")}>See all products</Button>
       </div>
     </div>
