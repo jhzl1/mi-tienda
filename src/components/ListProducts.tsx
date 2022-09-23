@@ -12,7 +12,7 @@ export const ListProducts = ({ limitOfProducts }: Props) => {
     useGetProducts(limitOfProducts)
 
   return (
-    <div className="px-36 grid grid-cols-4 gap-10">
+    <div className="px-2 xl:px-36 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
       {isLoading &&
         [...Array(4)].map((e, i) => (
           <Skeleton key={i} variant="rectangular" className="h-full" />

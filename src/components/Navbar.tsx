@@ -11,11 +11,14 @@ export const Navbar = () => {
   const { handleOpenCart } = useCart()
 
   return (
-    <div className="bg-gray-200 w-[95%] top-3 fixed left-1/2 transform -translate-x-1/2 py-3 px-12 rounded-xl flex justify-between items-center z-10 shadow-md">
+    <div className="bg-gray-200 w-[95%] top-3 fixed left-1/2 transform -translate-x-1/2 py-3 md:px-12 rounded-xl flex justify-between items-center z-10 shadow-md px-2">
       <Link to="/">
         <div className="flex items-center text-blue-500">
           <i className="fa-solid fa-bag-shopping text-3xl" />
-          <span id="navbar-title" className="font-extrabold text-3xl ml-2">
+          <span
+            id="navbar-title"
+            className="font-extrabold text-3xl ml-2 hidden md:block"
+          >
             MyStore
           </span>
         </div>

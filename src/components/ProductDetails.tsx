@@ -21,39 +21,40 @@ export const ProductDetails = ({ price, quantity, onAddCart }: Props) => {
 
   return (
     <>
-      <div>
-        <span className="text-2xl font-bold text-[#003890]">
-          {formatMoney(price)}
-        </span>{" "}
-        -
-        <span className="mx-1 text-md line-through decoration-red-500">
-          {formatMoney(priceWithoutDiscount)}
-        </span>
-        |<span className="mx-1">{quantity} avaliables</span>|
-        <button
-          onClick={decrementQuanity}
-          className="bg-gray-200  w-8 h-8 rounded-lg font-bold ml-1 disabled:cursor-not-allowed"
-          disabled={_quantity === 1}
-        >
-          -
-        </button>
-        <input
-          className="border w-10 h-8 px-2 rounded-lg mx-1 text-center"
-          readOnly
-          value={_quantity}
-        />
-        <button
-          onClick={incrementQuantity}
-          className="bg-gray-200  w-8 h-8 rounded-lg font-bold ml-1"
-          disabled={quantity === _quantity}
-        >
-          +
-        </button>
-      </div>
-      <div className="border-l-gray-200 pl-2">
-        <Button onClick={() => onAddCart(_quantity)}>
-          Add to cart <span className="ml-1" /> <CartIcon />
-        </Button>
+      <div className="grid grid-cols-1 sm:grid-cols-2 place-items-center gap-3 md:flex items-center w-full md:w-auto">
+        <p className="text-2xl font-bold text-[#003890]">
+          {formatMoney(price)}{" "}
+          <small className="mx-1 text-gray-700 line-through decoration-red-500">
+            {formatMoney(priceWithoutDiscount)}
+          </small>
+        </p>
+        <span className="mx-1">{quantity} avaliables</span>
+        <div>
+          <button
+            onClick={decrementQuanity}
+            className="bg-gray-200  w-8 h-8 rounded-lg font-bold ml-1 disabled:cursor-not-allowed"
+            disabled={_quantity === 1}
+          >
+            -
+          </button>
+          <input
+            className="border w-10 h-8 px-2 rounded-lg mx-1 text-center"
+            readOnly
+            value={_quantity}
+          />
+          <button
+            onClick={incrementQuantity}
+            className="bg-gray-200  w-8 h-8 rounded-lg font-bold ml-1"
+            disabled={quantity === _quantity}
+          >
+            +
+          </button>
+        </div>
+        <div className="border-l-gray-200 pl-2">
+          <Button onClick={() => onAddCart(_quantity)}>
+            Add to cart <span className="ml-1" /> <CartIcon />
+          </Button>
+        </div>
       </div>
     </>
   )

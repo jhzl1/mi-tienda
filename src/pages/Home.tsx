@@ -17,17 +17,17 @@ export const HomePage = () => {
 
   return (
     <div>
-      <div className="home-banner h-screen px-36 flex flex-col justify-center">
-        <div className="max-w-xl">
-          <span className="font-bold text-xl">New collection</span>
-          <h1 className="font-bold text-[60px]">
+      <div className="home-banner h-screen px-5 md:px-36 flex flex-col justify-center">
+        <div className="md:max-w-xl">
+          <span className="font-bold md:text-xl">New collection</span>
+          <h1 className="font-bold text-3xl md:text-6xl leading">
             Find everything you like in one place
           </h1>
 
           <Button
             size="large"
             color="secondary"
-            className="!text-xl"
+            className="md:!text-xl !my-5"
             onClick={handleSeeMore}
           >
             See more
@@ -36,7 +36,7 @@ export const HomePage = () => {
       </div>
 
       <div className="px-5 py-20" ref={someProductsRef}>
-        <h2 className="text-center text-5xl mb-20  text-[#003890]">
+        <h2 className="text-center text-3xl  md:text-5xl mb-20  text-[#003890]">
           Some products
         </h2>
         <ListProducts limitOfProducts={4} />

@@ -14,13 +14,13 @@ export const ProductPage = () => {
   return (
     <PageContainer>
       {isLoading ? (
-        <Skeleton className="mx-36 !h-20" />
+        <Skeleton className="!mx-2 !md:mx-36 !h-20" />
       ) : (
-        <div className="grid grid-cols-3 gap-4 text-gray-700 px-36">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 text-gray-700 px-4 xl:px-36">
           <div className="flex justify-center">
             <img src={product?.image} className="h-[400px]" />
           </div>
-          <div className="col-span-2">
+          <div className="md:col-span-2">
             <h3 className="text-2xl font-bold text-[#003890]">
               {product?.title}
             </h3>{" "}
@@ -41,11 +41,13 @@ export const ProductPage = () => {
                 }
               />
             </div>
-            <Rating
-              name="read-only"
-              value={Math.ceil(product!?.rating.rate)}
-              readOnly
-            />
+            <div className="flex justify-center md:block">
+              <Rating
+                name="read-only"
+                value={Math.ceil(product!?.rating.rate)}
+                readOnly
+              />
+            </div>
             <p className="my-3">{product?.description}</p>
           </div>
         </div>
