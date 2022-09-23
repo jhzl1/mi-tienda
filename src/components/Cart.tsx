@@ -1,4 +1,6 @@
 import { Button, Drawer } from "@mui/material"
+import { calculateTotal } from "helpers/calculateTotal"
+import { formatMoney } from "helpers/formatMoney"
 import { useAppSelector, useCart } from "hooks"
 import { CartItem } from "./CartItem"
 
@@ -8,6 +10,8 @@ export const Cart = () => {
   const itemsOnCart = useAppSelector((state) => state.cart.products)
 
   const { handleCloseCart, handleResetCart } = useCart()
+
+  const totalCart = calculateTotal()
 
   return (
     <Drawer
@@ -25,15 +29,20 @@ export const Cart = () => {
           itemsOnCart.map((item) => <CartItem key={item.id} {...item} />)
         )}
 
-        <div className="absolute bottom-0 right-0 p-3 grid grid-cols-2 gap-4 ">
-          <Button
-            onClick={handleResetCart}
-            color="secondary"
-            disabled={itemsOnCart.length === 0}
-          >
-            Reset cart
-          </Button>
-          <Button disabled={itemsOnCart.length === 0}>Checkout</Button>
+        <div className="absolute bottom-0 right-0 p-3">
+          <p className="text-right p-2 font-bold text-xl">
+            Total: {formatMoney(totalCart)}{" "}
+          </p>
+          <div className=" grid grid-cols-2 gap-4 ">
+            <Button
+              onClick={handleResetCart}
+              color="secondary"
+              disabled={itemsOnCart.length === 0}
+            >
+              Reset cart
+            </Button>
+            <Button disabled={itemsOnCart.length === 0}>Checkout</Button>
+          </div>
         </div>
       </div>
     </Drawer>

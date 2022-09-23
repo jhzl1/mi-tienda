@@ -1,21 +1,25 @@
 import { formatMoney } from "helpers/formatMoney"
-import { ProductOnCart } from "interfaces/Product"
+import { Product } from "interfaces/Product"
+import { ActionButtonsCart } from "./ActionButtonsCart"
 
-type Props = ProductOnCart
+type Props = Pick<Product, "image" | "title" | "price" | "id"> & {
+  quantity: number
+}
 
-export const CartItem = ({ image, title, price, quantity }: Props) => {
+export const CartItem = ({ image, title, price, quantity, id }: Props) => {
   return (
-    <div className="p-3 border-y border-y-gray-300 flex ">
-      <img src={image} className="w-10 mr-2" />
-      <div>
-        <p className="text-[#003890] font-bold">{title}</p>
-        <p>
-          {formatMoney(price)} X{quantity} ={" "}
-          <span className="font-bold text-lg">
+    <div className="border-y border-y-gray-300">
+      <div className="p-3  flex">
+        <img src={image} className="w-10 mr-2" />
+        <div className="flex justify-between items-center w-full">
+          <h5 className="text-lg text-[#003890] block font-bold">{title} </h5>
+
+          <span className="font-bold block text-lg text-right">
             {formatMoney(price * quantity)}{" "}
           </span>
-        </p>
+        </div>
       </div>
+      <ActionButtonsCart quantity={quantity} id={id} />
     </div>
   )
 }

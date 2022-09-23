@@ -39,13 +39,30 @@ export const cartSlice = createSlice({
         }
       }
     },
+    updateProduct: (state, action: PayloadAction<UpdateProduct>) => {
+      for (const product of state.products) {
+        if (product.id === action.payload.id) {
+          product.quantity = action.payload.quantity
+
+          break
+        }
+      }
+    },
+
+    deleteProduct: (state, action: PayloadAction<number>) => {
+      state.products = state.products.filter(
+        (product) => product.id !== action.payload
+      )
+    },
   },
 })
 
 export const {
   addItem,
   closeCart,
+  deleteProduct,
   openCart,
   resetCart,
+  updateProduct,
   updateQuantityProduct,
 } = cartSlice.actions
