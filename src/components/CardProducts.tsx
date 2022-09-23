@@ -7,13 +7,16 @@ import {
   Typography,
 } from "@mui/material"
 import { formatMoney } from "helpers/formatMoney"
+import { useCart } from "hooks"
 import { Product } from "interfaces/Product"
 import { useNavigate } from "react-router-dom"
 
 type Props = Product
 
-export const CardProducts = ({ title, image, rating, price, id }: Props) => {
+export const CardProduct = ({ title, image, rating, price, id }: Props) => {
   const { rate } = rating
+
+  const { handleAddToCart } = useCart()
 
   const priceWithoutDiscount = Math.floor((price * 20) / 100) + price
 
@@ -41,7 +44,19 @@ export const CardProducts = ({ title, image, rating, price, id }: Props) => {
         </Typography>
       </CardContent>
       <CardActions className="">
-        <Button size="small" color="secondary">
+        <Button
+          size="small"
+          color="secondary"
+          onClick={() =>
+            handleAddToCart({
+              id,
+              image,
+              price,
+              quantity: 1,
+              title,
+            })
+          }
+        >
           Add to cart
         </Button>
         <Button size="small" onClick={() => navigate(`/products/${id}`)}>

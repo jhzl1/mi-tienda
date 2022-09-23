@@ -33,7 +33,7 @@ export const ProductDetails = ({ price, quantity, onAddCart }: Props) => {
         <button
           onClick={decrementQuanity}
           className="bg-gray-200  w-8 h-8 rounded-lg font-bold ml-1 disabled:cursor-not-allowed"
-          disabled={quantity === 1}
+          disabled={_quantity === 1}
         >
           -
         </button>

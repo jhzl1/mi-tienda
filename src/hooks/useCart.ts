@@ -1,26 +1,39 @@
 import { ItemToCart } from "interfaces/Product"
-import { addItem, closeCart, openCart, resetCart } from "store/slices"
+import {
+  addItem,
+  closeCart,
+  openCart,
+  resetCart,
+  updateQuantityProduct,
+} from "store/slices"
 import { useAppDispatch } from "./useAppDispatch"
-import { Store } from "react-notifications-component"
+import { useAppSelector } from "./useAppSelector"
+import { renderPopup } from "helpers/renderPopup"
 
 export const useCart = () => {
   const dispatch = useAppDispatch()
+  const productsOnCart = useAppSelector((state) => state.cart.products)
+
+  const _updateQuantityProduct = (product: ItemToCart) => {
+    dispatch(
+      updateQuantityProduct({ id: product.id, quantity: product.quantity })
+    )
+
+    renderPopup("The item has been updated")
+  }
+
+  const findProductById = (productId: number) => {
+    return productsOnCart.find((product) => product.id === productId)
+  }
 
   const handleAddToCart = (productData: ItemToCart) => {
+    const productAlreadyAdded = findProductById(productData.id)
+
+    if (productAlreadyAdded) return _updateQuantityProduct(productData)
+
     dispatch(addItem(productData))
 
-    Store.addNotification({
-      message: "The item has been added to the cart",
-      type: "success",
-      insert: "top",
-      container: "top-right",
-      animationIn: ["animate__animated", "animate__flipInX"],
-      animationOut: ["animate__animated", "animate__flipOutX"],
-      dismiss: {
-        duration: 4000,
-        onScreen: true,
-      },
-    })
+    renderPopup("The item has been added to the cart")
   }
 
   const handleCloseCart = () => dispatch(closeCart())

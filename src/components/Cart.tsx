@@ -22,7 +22,7 @@ export const Cart = () => {
             The cart is empty
           </span>
         ) : (
-          itemsOnCart.map((item) => <CartItem {...item} />)
+          itemsOnCart.map((item) => <CartItem key={item.id} {...item} />)
         )}
 
         <div className="absolute bottom-0 right-0 p-3 grid grid-cols-2 gap-4 ">

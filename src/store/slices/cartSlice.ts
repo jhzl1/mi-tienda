@@ -1,14 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { ItemToCart, ProductOnCart } from "interfaces/Product"
-import uuid from "react-uuid"
+import { ItemToCart, UpdateProduct } from "interfaces/Product"
 interface CartSlice {
-  totalCart: number
-  products: ProductOnCart[]
+  products: ItemToCart[]
   isOpenCart: boolean
 }
 
 const initialState: CartSlice = {
-  totalCart: 0,
   products: [],
   isOpenCart: false,
 }
@@ -19,9 +16,8 @@ export const cartSlice = createSlice({
   reducers: {
     resetCart: () => initialState,
     addItem: (state, action: PayloadAction<ItemToCart>) => {
-      state.totalCart = state.totalCart + action.payload.price
       state.products.push({
-        id: uuid(),
+        id: action.payload.id,
         image: action.payload.image,
         price: action.payload.price,
         quantity: action.payload.quantity,
@@ -34,7 +30,22 @@ export const cartSlice = createSlice({
     closeCart: (state) => {
       state.isOpenCart = false
     },
+    updateQuantityProduct: (state, action: PayloadAction<UpdateProduct>) => {
+      for (const product of state.products) {
+        if (product.id === action.payload.id) {
+          product.quantity = product.quantity + action.payload.quantity
+
+          break
+        }
+      }
+    },
   },
 })
 
-export const { resetCart, addItem, openCart, closeCart } = cartSlice.actions
+export const {
+  addItem,
+  closeCart,
+  openCart,
+  resetCart,
+  updateQuantityProduct,
+} = cartSlice.actions

@@ -32,6 +32,7 @@ export const ProductPage = () => {
                 quantity={product!?.rating.count}
                 onAddCart={(quantity) =>
                   handleAddToCart({
+                    id: product!?.id,
                     image: product!?.image,
                     price: product!?.price,
                     quantity: quantity,

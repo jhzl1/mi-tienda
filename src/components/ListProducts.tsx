@@ -1,6 +1,6 @@
 import { Skeleton } from "@mui/material"
 import { useGetProducts } from "hooks"
-import { CardProducts } from "./CardProducts"
+import { CardProduct } from "./CardProducts"
 import uuid from "react-uuid"
 
 interface Props {
@@ -19,7 +19,7 @@ export const ListProducts = ({ limitOfProducts }: Props) => {
         ))}
 
       {isExistingProducts &&
-        products.map((product) => <CardProducts key={uuid()} {...product} />)}
+        products.map((product) => <CardProduct key={uuid()} {...product} />)}
     </div>
   )
 }

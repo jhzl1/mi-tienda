@@ -13,10 +13,8 @@ export interface Rating {
   count: number
 }
 
-export type ItemToCart = Pick<Product, "image" | "price" | "title"> & {
+export type ItemToCart = Pick<Product, "image" | "price" | "title" | "id"> & {
   quantity: number
 }
 
-export type ProductOnCart = ItemToCart & {
-  id: string
-}
+export type UpdateProduct = Pick<Product, "id"> & Pick<ItemToCart, "quantity">
