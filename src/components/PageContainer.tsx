@@ -1,6 +1,6 @@
-import { MyFC } from "interfaces/MyFc"
+import { PropsWithChildren } from "react"
 
-export const PageContainer = ({ children }: MyFC) => {
+export const PageContainer = ({ children }: PropsWithChildren) => {
   return (
     <div>
       <div className="bg-[#003890] h-52  md:h-64" />
