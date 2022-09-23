@@ -1,4 +1,5 @@
 import { Button, Drawer } from "@mui/material"
+import { CloseIcon } from "assets/icons/CloseIcon"
 import { calculateTotal } from "helpers/calculateTotal"
 import { formatMoney } from "helpers/formatMoney"
 import { useAppSelector, useCart } from "hooks"
@@ -20,7 +21,11 @@ export const Cart = () => {
       onClose={handleCloseCart}
       color="white"
     >
-      <div className="w-[500px] p-2 h-full relative">
+      <div className="w-screen  sm:w-[500px] p-2 h-full relative">
+        <button onClick={handleCloseCart} className="md:hidden">
+          <CloseIcon />
+        </button>
+
         {itemsOnCart.length === 0 ? (
           <span className="block text-center w-full text-lg">
             The cart is empty
