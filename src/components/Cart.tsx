@@ -9,7 +9,7 @@ export const Cart = () => {
 
   const itemsOnCart = useAppSelector((state) => state.cart.products)
 
-  const { handleCloseCart, handleResetCart } = useCart()
+  const { handleCloseCart, handleResetCart, handleCheckout } = useCart()
 
   const totalCart = calculateTotal()
 
@@ -41,7 +41,12 @@ export const Cart = () => {
             >
               Reset cart
             </Button>
-            <Button disabled={itemsOnCart.length === 0}>Checkout</Button>
+            <Button
+              disabled={itemsOnCart.length === 0}
+              onClick={handleCheckout}
+            >
+              Checkout
+            </Button>
           </div>
         </div>
       </div>

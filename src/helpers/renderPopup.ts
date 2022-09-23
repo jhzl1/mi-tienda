@@ -14,3 +14,17 @@ export const renderPopup = (msg: string) => {
     },
   })
 }
+
+export const renderPopupSuccess = () => {
+  Store.addNotification({
+    message: "The purchase has been completed successfully",
+    type: "success",
+    insert: "top",
+    container: "center",
+    animationIn: ["animate__animated", "animate__flipInX"],
+    animationOut: ["animate__animated", "animate__flipOutX"],
+    dismiss: {
+      duration: 5000,
+    },
+  })
+}

@@ -1,6 +1,5 @@
 import "react-notifications-component/dist/theme.css"
 import "./assets/css/app.css"
-
 import "animate.css"
 
 import { Outlet } from "react-router-dom"

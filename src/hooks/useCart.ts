@@ -10,7 +10,7 @@ import {
 } from "store/slices"
 import { useAppDispatch } from "./useAppDispatch"
 import { useAppSelector } from "./useAppSelector"
-import { renderPopup } from "helpers/renderPopup"
+import { renderPopup, renderPopupSuccess } from "helpers/renderPopup"
 
 export const useCart = () => {
   const dispatch = useAppDispatch()
@@ -47,6 +47,11 @@ export const useCart = () => {
   const handleOpenCart = () => dispatch(openCart())
   const handleResetCart = () => dispatch(resetCart())
 
+  const handleCheckout = () => {
+    renderPopupSuccess()
+    handleResetCart()
+  }
+
   return {
     handleAddToCart,
     handleCloseCart,
@@ -55,5 +60,6 @@ export const useCart = () => {
     updateQuantityProduct: _updateQuantityProduct,
     updateProductOfCart,
     handleDeleteProduct,
+    handleCheckout,
   }
 }
